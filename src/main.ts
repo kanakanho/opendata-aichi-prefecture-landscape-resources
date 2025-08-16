@@ -27,9 +27,9 @@ map.on('load', () => {
     if (!features) {
       return
     }
-    const coordinates = features[0].geometry.coordinates.slice()
+    const coordinatePoint = (features[0].geometry as GeoJSON.Point).coordinates.slice()
     const description = features[0].properties.タイトル
 
-    new maplibregl.Popup().setLngLat(coordinates).setHTML(description).addTo(map)
+    new maplibregl.Popup().setLngLat([coordinatePoint[0], coordinatePoint[1]]).setHTML(description).addTo(map)
   })
 })
